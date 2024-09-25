@@ -743,7 +743,7 @@ a:focus {
 }
 
 .service .service-item:hover {
-    box-shadow: inset 800px 0 0 0 #3CA6A6;
+    box-shadow: inset 5000px 0 0 0 #3CA6A6;
 }
 
 .service .service-icon {
@@ -770,7 +770,7 @@ a:focus {
 
 .service .service-text {
     position: relative;
-    width: calc(100% - 120px);
+    width: calc(100% - 50px);
     padding: 0 30px;
 }
 
