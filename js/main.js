@@ -105,5 +105,30 @@
         portfolioIsotope.isotope({ filter: $(this).data('filter') });
     });
 
+    document.getElementById("copyEmailBtn").addEventListener("click", function () {
+        // Cria um elemento de input temporário
+        var tempInput = document.createElement("input");
+        var emailText = document.getElementById("emailText").innerText;
+
+        // Atribui o valor do e-mail ao input temporário
+        tempInput.value = emailText;
+        document.body.appendChild(tempInput);
+
+        // Seleciona e copia o valor
+        tempInput.select();
+        document.execCommand("copy");
+
+        // Remove o input temporário
+        document.body.removeChild(tempInput);
+
+        // Mostra a notificação de sucesso
+        var notification = document.getElementById("notification");
+        notification.style.display = "block";
+
+        // Oculta a notificação após 3 segundos
+        setTimeout(function () {
+            notification.style.display = "none";
+        }, 3000);
+    });
 })(jQuery);
 
