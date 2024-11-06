@@ -12,6 +12,7 @@
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +36,11 @@
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="#teste">
+                            <img src="img/bella.png" alt="Imagem Bella" style="height: 80px; width: auto; display: block;">
+                        </a>
+                    </div>
                     <div class="navbar-nav ml-auto">
                         <a href="#home" class="nav-item nav-link active">Home</a>
                         <a href="#service" class="nav-item nav-link">Habilidades</a>
@@ -42,7 +48,7 @@
                         <a href="#review" class="nav-item nav-link">Recomendações</a>
                         <a href="#contact" class="nav-item nav-link">Contato</a>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
         <!-- Nav Bar End -->
@@ -55,37 +61,22 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="hero-content">
                             <div class="hero-text">
-                                <h1>Kauan Rocha</h1>
-                                <h2>Desenvolvedor</h2>
-                                <P>
-                                    <a href="https://github.com/KauanSundays" target="_blank" style="margin-right: 15px;">
-                                        <i class="fab fa-github" style="font-size: 100%;"></i>
-                                    </a>
-                                    <a href="https://www.youtube.com/@PaysanduDev" target="_blank" style="color: #C4EEF2; margin-right: 15px;">
-                                        <i class="fab fa-youtube" style="font-size: 100%;"></i>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/kauan-domingos-046a83199/" target="_blank" style="color: #7AB8BF;">
-                                        <i class="fab fa-linkedin" style="font-size: 100%;"></i>
-                                    </a>
-                                </P>
-                                <div class="hero-btn">
-                                    <a class="btn" id="copyEmailBtn">
-                                        Copiar E-mail 📋🔗
-                                    </a>
-                                </div>
+                                <h1 class="cursive-heading text-dark">O sabor mais gostoso na sua <span class="bg-dark text-light px-2 rounded">Freguesia</span></h1>
+                                <p class="cursive-heading bg-dark text-light">Temos <span id="changingText"></span> tudo no mesmo lugar!</p>
+
                                 <div class="email-box" style="background-color: #3E848C; border: 2px solid #C4EEF2; padding: 12px 20px; border-radius: 6px; color: #C4EEF2; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; margin-top: 10px;">
-                                    <p id="emailText" style="margin: 0; font-weight: bold;">ricardo.kauand@gmail.com</p>
+                                    <p id="emailText" style="margin: 0; font-weight: bold;">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;">
+                                        Entrar em contato
+                                    </p>
                                 </div>
-                            </div>
-                            <p class="notification" id="notification" style="background-color: #3E848C; border-left: 5px solid #C4EEF2; padding: 15px; border-radius: 8px; font-size: 16px; color: #C4EEF2; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 10px; display: none;">
-                                E-mail copiado com sucesso!
-                            </p>
-                                                                                                       
+                                                              
+                            </div>                                                                      
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 d-none d-md-block">
-                        <div class="hero-image">
-                            <img src="img/hero.png" alt="Hero Image">
+                        <div class="hero-image mb-4">
+                            <img src="img/bolo.png" style="max-width: 60vh;" alt="Hero Image">
                         </div>
                     </div>
                 </div>
@@ -95,91 +86,31 @@
         <div class="service" id="service">
             <div class="container">
                 <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <h2 style="color: #A67458;">Habilidades</h2>
+                    <h2 style="color: #A67458;">Especiarias</h2>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <i class="fa fa-laptop"></i>
-                            </div>
-                            <div class="service-text">
-                                <h3>Backend</h3>
-                                <img src="https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white" alt="PHP" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white" alt="Laravel" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white" alt="Node.js" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/Typescript-3178C6?logo=typescript&logoColor=white" alt="Typescript" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/Express-000000?logo=express&logoColor=white" alt="Express" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/NestJS-E0234E?logo=nestjs&logoColor=white" alt="NestJS" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white" alt="Golang" style="width: 10vh;">
-                                <img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java" style="width: 10vh;">
-                                <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white" alt="Java" style="width: 10vh;">
-                            </div>                                                 
-                        </div>
-                    </div>
-                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <i class="fa fa-laptop-code"></i>
-                            </div>
-                            <div class="service-text">
-                                <h3>Frontend</h3>
 
-                                <img src="https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white" alt="HTML" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white" alt="CSS" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/Javascript-F7DF1E?logo=javascript&logoColor=white" alt="Javascript" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white" alt="Bootstrap" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/Sass-CC6699?logo=sass&logoColor=white" alt="Sass" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/JQuery-0769AD?logo=jquery&logoColor=white" alt="JQuery" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/ReactJS-61DAFB?logo=react&logoColor=white" alt="ReactJS" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white" alt="Next.js" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/Vue.js-4FC08D?logo=vue.js&logoColor=white" alt="Vue.js" style="width: 10vh;"/>
-                            </div>
+                <div class="row">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <a href="https://padariabandeirantes4.com.br/yl/cardapio/">
+                                <img src="img/pizza.jpg" style="max-width: 40vh;" alt="Imagem de Pizza" class="img-fluid rounded">
+                            </a>
+                        </div>
+                        <div>
+                            <h4><a href="https://padariabandeirantes4.com.br/yl/cardapio/" class="text-decoration-none text-dark">Pizza</a></h4>
+                            <p>Rodízio de pizza no dia a dia <br> das xxh às xxh.</p>
                         </div>
                     </div>
-                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <i class="fab fa-android"></i>
-                            </div>
-                            <div class="service-text">
-                                <h3>Aplicativos</h3>
-                                <img src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React Native" style="width: 20vh;"/>
-                                <img src="https://img.shields.io/badge/Ionic-%233880FF.svg?style=for-the-badge&logo=Ionic&logoColor=white" alt="Ionic" style="width: 10vh;"/>
-                            </div>
+
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <a href="https://padariabandeirantes4.com.br/yl/cardapio/">
+                                <img src="img/misto-quente.jpg" style="max-width: 40vh;" alt="Imagem de Pizza" class="img-fluid rounded">
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <i class="fab fa-apple"></i>
-                            </div>
-                            <div class="service-text">
-                                <h3>INFRAESTRUTURA</h3>
-                                <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker"/>
-                                <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="git"/>
-                                <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="github"/>
-                                <img src="https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white" alt="gitlab"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <i class="fab fa-apple"></i>
-                            </div>
-                            <div class="service-text">
-                                <h3>BANCO DE DADOS</h3>
-                                <img src="https://img.shields.io/badge/SQL Server-CC2927?logo=microsoftsqlserver&logoColor=white" alt="SQL Server" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white" alt="MySQL" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white" alt="PostgreSQL" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white" alt="Redis" style="width: 10vh;"/>
-                                <img src="https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white" alt="MongoDB" style="width: 10vh;"/>
-                            </div>
+                        <div>
+                            <h4><a href="https://padariabandeirantes4.com.br/yl/cardapio/" class="text-decoration-none text-dark">Lanches</a></h4>
+                            <p>Variedade de Lanches todos os dias.</p>
                         </div>
                     </div>
                 </div>

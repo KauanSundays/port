@@ -248,7 +248,8 @@ a:focus {
     margin-bottom: 45px;
     padding: 120px 0 0 0;
     overflow: hidden;
-    background: linear-gradient(rgba(60, 166, 166, 0.95), rgba(2, 103, 115, 0.95), rgba(2, 73, 89, 0.95)), url(../img/hero-bg.jpg);
+    /* background: linear-gradient(rgba(60, 166, 166, 0.95), rgba(2, 103, 115, 0.95), rgba(2, 73, 89, 0.95)); */
+    background: #F6E6DA;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -265,8 +266,8 @@ a:focus {
 }
 
 .hero .hero-image img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 100%; /* Ajusta a imagem para ocupar o espaço total */
+    max-height: 100%; /* Remove o zoom */
 }
 
 .hero .hero-content {
@@ -277,6 +278,7 @@ a:focus {
     justify-content: center;
     flex-direction: column;
 }
+
 
 .hero .hero-text p {
     color: #ffffff;
@@ -328,6 +330,24 @@ a:focus {
 
 .hero .hero-btn .btn:first-child {
     margin-right: 10px;
+}
+
+.cursive-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+}
+
+#changingText {
+    color: #ffed4a; /* Amarelo para contrastar */
+    padding: 0 5px;
+    font-weight: bold;
+    animation: blink 0.8s infinite;
+}
+
+/* Efeito de piscar o cursor */
+@keyframes blink {
+    0%, 100% { border-right: 2px solid transparent; }
+    50% { border-right: 2px solid #ffed4a; } /* Cor de cursor */
 }
 
 @media (max-width: 991.98px) {

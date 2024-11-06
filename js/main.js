@@ -1,4 +1,38 @@
 (function ($) {
+    const words = ["Padaria", "Buffet", "Almoço", "Jantar", "Pizzaria"];
+    let currentIndex = 0;
+    let currentWord = "";
+    let isDeleting = false;
+    const typingSpeed = 150;  // Velocidade de digitação (ms)
+    const deletingSpeed = 100; // Velocidade de apagar (ms)
+    const delayBetweenWords = 1000; // Pausa antes de trocar a palavra (ms)
+
+    function typeEffect() {
+        const changingText = document.getElementById("changingText");
+
+        if (isDeleting) {
+            currentWord = words[currentIndex].substring(0, currentWord.length - 1);
+        } else {
+            currentWord = words[currentIndex].substring(0, currentWord.length + 1);
+        }
+        changingText.textContent = currentWord;
+
+        let speed = isDeleting ? deletingSpeed : typingSpeed;
+
+        if (!isDeleting && currentWord === words[currentIndex]) {
+            speed = delayBetweenWords;
+            isDeleting = true;
+        } else if (isDeleting && currentWord === "") {
+            isDeleting = false;
+            currentIndex = (currentIndex + 1) % words.length;
+            speed = typingSpeed;
+        }
+
+        setTimeout(typeEffect, speed);
+    }
+
+    typeEffect();
+
     "use strict";
 
     // loader
