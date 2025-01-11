@@ -1,11 +1,18 @@
-/*******************************/
-/********* General CSS *********/
-/*******************************/
-body {
-    color: #797979;
-    background: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+:root {
+    --color1: #0FC2C0;
+    --color2: #0CABA8;
+    --color3: #008F8C;
+    --color4: #015958;
+    --color5: #023535;
+    --color6: #EBC015;
 }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita o overflow horizontal */
+}
+
 
 h1,
 h2, 
@@ -35,7 +42,8 @@ a:focus {
 }
 
 .container-fluid {
-    max-width: 1366px;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .btn {
@@ -243,32 +251,31 @@ a:focus {
 /********** Hero CSS ***********/
 /*******************************/
 .hero {
-    position: relative;
-    width: 100%;
-    margin-bottom: 45px;
-    padding: 120px 0 0 0;
-    overflow: hidden;
-    /* background: linear-gradient(rgba(60, 166, 166, 0.95), rgba(2, 103, 115, 0.95), rgba(2, 73, 89, 0.95)); */
-    background: #F6E6DA;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.hero .container-fluid {
-    padding: 0;
+    background-color: var(--color2);
+    display: flex;
+    align-items: flex-end; /* Alinha tudo ao fundo */
+    justify-content: space-between; /* Distribui espaço horizontalmente */
+    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
+    margin: 0; /* Remove qualquer margem extra */
+    padding: 0; /* Remove padding adicional */
+    overflow: hidden; /* Garante que nada transborde */
 }
 
 .hero .hero-image {
-    position: relative;
-    text-align: right;
-    padding-right: 75px;
+    flex: 1; /* Faz com que a imagem ocupe todo o espaço disponível no lado direito */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; /* Alinha a imagem à parte inferior */
 }
 
 .hero .hero-image img {
-    max-width: 100%; /* Ajusta a imagem para ocupar o espaço total */
-    max-height: 100%; /* Remove o zoom */
+    width: auto; /* Mantém a proporção da imagem */
+    height: 80vh; /* Define que a imagem ocupará 90% da altura do contêiner */
+    object-fit: contain; /* Ajusta o conteúdo da imagem dentro do espaço */
+    margin: 0; /* Remove margens */
+    padding: 0; /* Remove paddings */
 }
+
 
 .hero .hero-content {
     position: relative;
@@ -338,7 +345,7 @@ a:focus {
 }
 
 #changingText {
-    color: #ffed4a; /* Amarelo para contrastar */
+    color: var(--color6); /* Amarelo para contrastar */
     padding: 0 5px;
     font-weight: bold;
     animation: blink 0.8s infinite;
@@ -742,87 +749,6 @@ a:focus {
         border-left: 5px solid #dddddd;
     }
 }
-
-
-/*******************************/
-/********* Service CSS *********/
-/*******************************/
-.service {
-    position: relative;
-    width: 100%;
-    padding: 45px 0 15px 0;
-}
-
-.service .service-item {
-    position: relative;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    box-shadow: inset 0 0 0 0 transparent;
-    transition: ease-out 0.5s;
-}
-
-.service .service-item:hover {
-    box-shadow: inset 5000px 0 0 0 #3CA6A6;
-}
-
-.service .service-icon {
-    position: relative;
-    width: 150px;
-    min-height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #3CA6A6;
-    background: #ffffff;
-}
-
-.service .service-icon i {
-    position: relative;
-    font-size: 60px;
-    color: #3CA6A6;
-    transition: .3s;
-}
-
-.service .service-item:hover i {
-    font-size: 75px;
-}
-
-.service .service-text {
-    position: relative;
-    width: calc(100% - 50px);
-    padding: 0 30px;
-}
-
-.service .service-text h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    transition: 1s;
-}
-
-.service .service-text p {
-    margin: 0;
-    font-size: 16px;
-    transition: 1s;
-}
-
-.service .service-item:hover .service-text h3,
-.service .service-item:hover .service-text p {
-    color: #ffffff;
-}
-
-@media (max-width: 575.98px) {
-    .service .service-text h3 {
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-    
-    .service .service-text p {
-        font-size: 14px;
-    }
-}
-
 
 /*******************************/
 /******** Portfolio CSS ********/
@@ -1642,19 +1568,26 @@ a:focus {
 }
 
 .email-box {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #3E848C;
+    border: 2px solid #C4EEF2;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: #C4EEF2;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     display: inline-block;
-    background-color: #f5f5f5;
-    width: fit-content;
+    margin-top: 10px;
+    width: auto; /* Ajusta a largura automaticamente ao conteúdo */
+    max-width: 100%; /* Impede que a caixa ultrapasse a largura da tela ou do contêiner pai */
+    word-wrap: break-word; /* Permite quebra de linha, se necessário */
 }
 
 .email-box p {
     margin: 0;
     font-size: 16px;
+    white-space: nowrap; /* Evita quebra de linha */
 }
+
 
 .notification {
     margin-top: 10px;
@@ -1662,3 +1595,60 @@ a:focus {
     color: green;
     display: none;
 }
+
+.navbar a span strong {
+    font-size: 1.5em; /* Altere o valor para o tamanho desejado */
+}
+
+.navbar, .hero, .experience, .portfolio {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+    #copyButton {
+        background-color: #C4EEF2;
+        border: none;
+        color: #3E848C;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 5px;
+        display: inline-flex;
+        align-items: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de movimento e sombra */
+    }
+
+    #copyButton:hover {
+        transform: translateY(-4px); /* Movimento para cima */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+    }
+
+    #copyButton img {
+        width: 15px;
+        margin-left: 8px;
+    }
+
+
+    .toast {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+        opacity: 0;
+        transition: opacity 0.5s, visibility 0.5s;
+    }
+
+    .toast.show {
+        visibility: visible;
+        opacity: 1;
+    }

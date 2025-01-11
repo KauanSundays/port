@@ -1,5 +1,5 @@
 (function ($) {
-    const words = ["Padaria", "Buffet", "Almoço", "Jantar", "Pizzaria"];
+    const words = ["Desenvolvedor", "Programador", "Especialista em Resolução de Problemas"];
     let currentIndex = 0;
     let currentWord = "";
     let isDeleting = false;
@@ -165,4 +165,5 @@
         }, 3000);
     });
 })(jQuery);
+
 
