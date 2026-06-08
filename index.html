@@ -1,410 +1,926 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Kauan Domingos - Desenvolvedor</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Free Website Template" name="keywords">
-        <meta content="Free Website Template" name="description">
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kauan Domingos — Rei da Automação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+        :root {
+            --bg: #0A0E1A;
+            --surface: #111827;
+            --surface2: #1A2035;
+            --cyan: #00D4FF;
+            --orange: #FF6B2B;
+            --text: #F0F4FF;
+            --muted: #8892A4;
+            --border: rgba(0,212,255,0.15);
+        }
 
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+        html { scroll-behavior: smooth; }
 
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
 
-    <body data-spy="scroll" data-target=".navbar" data-offset="51">
-        <!-- Nav Bar Start -->
-        <div class="navbar navbar-expand-lg bg-light navbar-light">
-            <div class="container-fluid">
-                <a href="index.html" class="navbar-brand"></a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        /* ─── NAVBAR ─── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(10,14,26,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 1.1rem;
+            color: var(--cyan);
+            letter-spacing: 0.05em;
+        }
+        .nav-logo span { color: var(--orange); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem; color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--cyan); }
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav">
-                        <a href="#teste">
-                            <span><strong>𝗞𝗔𝗨𝗔𝗡</strong></span>
-                        </a>
-                    </div>
-                    <div class="navbar-nav ml-auto">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#service" class="nav-item nav-link">Habilidades</a>
-                        <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
-                        <a href="#review" class="nav-item nav-link">Recomendações</a>
-                        <a href="#contact" class="nav-item nav-link">Contato</a>
-                    </div>
-                </div>                
+        /* ─── HERO ─── */
+        #home {
+            min-height: 100vh;
+            display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 80px 6vw 0;
+            position: relative;
+            overflow: hidden;
+        }
+        #home::before {
+            content: '';
+            position: absolute; top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem; color: var(--orange);
+            letter-spacing: 0.15em; text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .hero-eyebrow::before { content: '> '; color: var(--cyan); }
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero-title .name { color: var(--cyan); display: block; }
+        .hero-title .role {
+            color: var(--text);
+            -webkit-text-stroke: 1px rgba(240,244,255,0.3);
+        }
+        .hero-sub {
+            font-size: 1.05rem; color: var(--muted);
+            line-height: 1.7; max-width: 480px;
+            margin-bottom: 2.5rem;
+        }
+        .hero-sub strong { color: var(--text); }
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--orange);
+            color: #fff; border: none;
+            padding: 0.85rem 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600; font-size: 0.95rem;
+            border-radius: 6px; cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            text-decoration: none;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,43,0.35); }
+        .btn-ghost {
+            background: transparent;
+            color: var(--cyan); border: 1px solid var(--cyan);
+            padding: 0.85rem 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600; font-size: 0.95rem;
+            border-radius: 6px; cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-ghost:hover { background: rgba(0,212,255,0.08); }
+
+        /* ─── TERMINAL (signature element) ─── */
+        .hero-terminal {
+            background: #0D1117;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,212,255,0.08);
+        }
+        .terminal-bar {
+            background: #161B22;
+            padding: 0.75rem 1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #FF5F57; }
+        .dot.yellow { background: #FEBC2E; }
+        .dot.green { background: #28C840; }
+        .terminal-label {
+            margin-left: auto;
+            font-size: 0.7rem; color: var(--muted);
+        }
+        .terminal-body { padding: 1.25rem; min-height: 280px; }
+        .t-line { display: flex; margin-bottom: 0.45rem; line-height: 1.5; }
+        .t-prompt { color: var(--cyan); margin-right: 0.5rem; flex-shrink: 0; }
+        .t-cmd { color: #A8B3CF; }
+        .t-comment { color: #4A5568; }
+        .t-output { color: var(--text); margin-bottom: 0.45rem; padding-left: 1.2rem; line-height: 1.5; }
+        .t-success { color: #28C840; }
+        .t-warn { color: var(--orange); }
+        .t-cyan { color: var(--cyan); }
+        .t-cursor {
+            display: inline-block; width: 8px; height: 14px;
+            background: var(--cyan); animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        /* ─── STATS BAR ─── */
+        .stats-bar {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 6vw;
+            display: flex; gap: 3rem; flex-wrap: wrap;
+            align-items: center; justify-content: center;
+        }
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem; font-weight: 700;
+            color: var(--cyan);
+        }
+        .stat-num .orange { color: var(--orange); }
+        .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.08em; }
+        .stat-divider { width: 1px; height: 48px; background: var(--border); }
+
+        /* ─── SECTION COMMON ─── */
+        section { padding: 6rem 6vw; }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem; color: var(--orange);
+            letter-spacing: 0.2em; text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .section-label::before { content: '// '; color: var(--cyan); }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 700; margin-bottom: 1rem;
+        }
+        .section-desc { color: var(--muted); max-width: 560px; line-height: 1.7; font-size: 1rem; }
+
+        /* ─── AUTOMAÇÃO SECTION ─── */
+        #automacao { background: var(--bg); }
+        .auto-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem; margin-top: 3rem;
+        }
+        .auto-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            position: relative;
+            transition: border-color 0.25s, transform 0.25s;
+            overflow: hidden;
+        }
+        .auto-card::before {
+            content: '';
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 3px; background: var(--cyan);
+            border-radius: 3px 0 0 3px;
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+        .auto-card:hover { border-color: rgba(0,212,255,0.4); transform: translateY(-4px); }
+        .auto-card:hover::before { transform: scaleY(1); }
+        .auto-icon {
+            width: 48px; height: 48px;
+            background: rgba(0,212,255,0.08);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--cyan);
+            margin-bottom: 1.25rem;
+        }
+        .auto-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem; font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+        .auto-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+        .auto-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem; color: var(--orange);
+            background: rgba(255,107,43,0.08);
+            border: 1px solid rgba(255,107,43,0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        /* ─── HABILIDADES ─── */
+        #habilidades { background: var(--surface); }
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem; margin-top: 3rem;
+        }
+        .skill-chip {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.9rem 0.75rem;
+            text-align: center;
+            transition: border-color 0.2s, background 0.2s;
+            cursor: default;
+        }
+        .skill-chip:hover { border-color: var(--cyan); background: rgba(0,212,255,0.04); }
+        .skill-chip i { font-size: 1.6rem; margin-bottom: 0.4rem; display: block; }
+        .skill-chip span { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+        .php-color { color: #8892BF; }
+        .laravel-color { color: #FF2D20; }
+        .js-color { color: #F7DF1E; }
+        .python-color { color: #3776AB; }
+        .react-color { color: #61DAFB; }
+        .mysql-color { color: #4479A1; }
+        .git-color { color: #F05032; }
+        .node-color { color: #339933; }
+        .n8n-color { color: #EA4B71; }
+        .zapier-color { color: #FF4A00; }
+        .api-color { color: var(--cyan); }
+        .docker-color { color: #2496ED; }
+
+        /* ─── TIMELINE / RECONHECIMENTOS ─── */
+        #reconhecimentos { background: var(--bg); }
+        .timeline { position: relative; margin-top: 3rem; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 50%; transform: translateX(-50%);
+            top: 0; bottom: 0; width: 1px;
+            background: linear-gradient(to bottom, var(--cyan), transparent);
+        }
+        .tl-item {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 3rem; margin-bottom: 3rem; position: relative;
+        }
+        .tl-item.right .tl-content { grid-column: 2; }
+        .tl-item.left .tl-content { grid-column: 1; }
+        .tl-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.5rem;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+        .tl-content:hover { border-color: rgba(0,212,255,0.35); }
+        .tl-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem; color: var(--orange);
+            letter-spacing: 0.1em; margin-bottom: 0.5rem;
+        }
+        .tl-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;
+        }
+        .tl-org { font-size: 0.8rem; color: var(--cyan); margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace; }
+        .tl-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+        .tl-dot {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            top: 1.5rem;
+            width: 12px; height: 12px;
+            background: var(--cyan);
+            border-radius: 50%;
+            border: 2px solid var(--bg);
+            z-index: 1;
+        }
+
+        /* ─── PORTFOLIO ─── */
+        #portfolio { background: var(--surface); }
+        .portfolio-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem; margin-top: 3rem;
+        }
+        .pf-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+        .pf-card:hover { border-color: rgba(0,212,255,0.4); transform: translateY(-4px); }
+        .pf-img {
+            height: 180px;
+            background: var(--surface2);
+            position: relative;
+            overflow: hidden;
+        }
+        .pf-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .pf-card:hover .pf-img img { transform: scale(1.05); }
+        .pf-body { padding: 1.25rem; }
+        .pf-body h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem;
+        }
+        .pf-body p { font-size: 0.82rem; color: var(--muted); }
+        .pf-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.75rem; }
+        .pf-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem; color: var(--cyan);
+            background: rgba(0,212,255,0.07);
+            border: 1px solid rgba(0,212,255,0.2);
+            padding: 0.15rem 0.5rem; border-radius: 3px;
+        }
+
+        /* ─── DEPOIMENTOS ─── */
+        #depoimentos { background: var(--bg); }
+        .dep-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem; margin-top: 3rem;
+        }
+        .dep-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.75rem;
+            position: relative;
+        }
+        .dep-card::before {
+            content: '"';
+            position: absolute; top: 1rem; right: 1.5rem;
+            font-size: 4rem; color: rgba(0,212,255,0.1);
+            font-family: Georgia, serif; line-height: 1;
+        }
+        .dep-text { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+        .dep-author { display: flex; align-items: center; gap: 1rem; }
+        .dep-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--cyan);
+            object-fit: cover;
+        }
+        .dep-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; }
+        .dep-role { font-size: 0.75rem; color: var(--cyan); font-family: 'JetBrains Mono', monospace; }
+
+        /* ─── CONTATO ─── */
+        #contato {
+            background: var(--surface);
+            text-align: center;
+        }
+        .contact-box {
+            max-width: 600px; margin: 3rem auto 0;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px; padding: 3rem;
+        }
+        .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+        .contact-link {
+            display: flex; align-items: center; gap: 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px; padding: 1rem 1.5rem;
+            text-decoration: none; color: var(--text);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .contact-link:hover { border-color: var(--cyan); background: rgba(0,212,255,0.04); }
+        .contact-link i { font-size: 1.2rem; width: 24px; text-align: center; }
+        .contact-link .cl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-right: auto; }
+        .contact-link .cl-val { font-size: 0.9rem; color: var(--cyan); }
+        .copy-toast {
+            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px);
+            background: var(--cyan); color: var(--bg);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem; font-weight: 500;
+            padding: 0.75rem 1.5rem; border-radius: 8px;
+            transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+            z-index: 999; pointer-events: none;
+        }
+        .copy-toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 2rem 6vw;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem; color: var(--muted);
+        }
+        .footer-logo span { color: var(--cyan); }
+        .footer-copy { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+        .footer-socials { display: flex; gap: 1rem; }
+        .footer-socials a {
+            width: 36px; height: 36px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted); text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .footer-socials a:hover { border-color: var(--cyan); color: var(--cyan); }
+
+        /* ─── BACK TO TOP ─── */
+        .back-top {
+            position: fixed; bottom: 2rem; right: 2rem;
+            width: 44px; height: 44px;
+            background: var(--orange);
+            color: #fff; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .back-top.visible { opacity: 1; pointer-events: auto; }
+        .back-top:hover { transform: translateY(-3px); }
+
+        /* ─── MOBILE ─── */
+        @media (max-width: 768px) {
+            #home { grid-template-columns: 1fr; padding-top: 100px; }
+            .hero-terminal { display: none; }
+            .stats-bar { gap: 1.5rem; }
+            .stat-divider { display: none; }
+            .timeline::before { display: none; }
+            .tl-item { grid-template-columns: 1fr; }
+            .tl-item.right .tl-content,
+            .tl-item.left .tl-content { grid-column: 1; }
+            .tl-dot { display: none; }
+            nav { padding: 0 1.25rem; }
+            .nav-links { gap: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .nav-links { display: none; }
+        }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-up {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Glow pulse on cyan accents */
+        @keyframes pulse-glow {
+            0%,100% { box-shadow: 0 0 0 rgba(0,212,255,0); }
+            50% { box-shadow: 0 0 20px rgba(0,212,255,0.25); }
+        }
+        .btn-ghost { animation: pulse-glow 3s ease-in-out infinite; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">KD<span>.</span></div>
+    <ul class="nav-links">
+        <li><a href="#home">home</a></li>
+        <li><a href="#automacao">automação</a></li>
+        <li><a href="#habilidades">skills</a></li>
+        <li><a href="#portfolio">portfolio</a></li>
+        <li><a href="#depoimentos">reviews</a></li>
+        <li><a href="#contato">contato</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+    <div class="hero-left">
+        <div class="hero-eyebrow">Automação &amp; Desenvolvimento</div>
+        <h1 class="hero-title">
+            <span class="name">Kauan Domingos</span>
+            <span class="role">Rei da Automação</span>
+        </h1>
+        <p class="hero-sub">
+            Transformo <strong>processos repetitivos em fluxos automáticos</strong>. 
+            Se você gasta horas fazendo o mesmo manualmente, eu resolvo isso — 
+            com código limpo, integrações inteligentes e zero retrabalho.
+        </p>
+        <div class="hero-ctas">
+            <a href="#contato" class="btn-primary">
+                <i class="fas fa-bolt"></i> Quero automatizar agora
+            </a>
+            <a href="#portfolio" class="btn-ghost">
+                <i class="fas fa-code"></i> Ver projetos
+            </a>
+        </div>
+    </div>
+    <div class="hero-terminal">
+        <div class="terminal-bar">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <span class="terminal-label">kauan@automacao ~ automate.sh</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <!-- filled by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="stat-item">
+        <div class="stat-num" id="stat1">0<span class="orange">+</span></div>
+        <div class="stat-label">Projetos entregues</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+        <div class="stat-num" id="stat2">0<span class="orange">h</span></div>
+        <div class="stat-label">Horas economizadas</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+        <div class="stat-num" id="stat3">0<span class="orange">+</span></div>
+        <div class="stat-label">Integrações criadas</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+        <div class="stat-num"><span id="stat4">4</span><span class="orange">+</span></div>
+        <div class="stat-label">Anos de experiência</div>
+    </div>
+</div>
+
+<!-- AUTOMAÇÃO -->
+<section id="automacao">
+    <div class="section-label">especialidade</div>
+    <h2 class="section-title">O que eu automatizo para você</h2>
+    <p class="section-desc">Se tem uma tarefa que você faz mais de uma vez por semana, ela pode (e deve) ser automatizada.</p>
+    <div class="auto-grid">
+        <div class="auto-card fade-up">
+            <div class="auto-icon"><i class="fas fa-robot"></i></div>
+            <h3>Automação de Processos (RPA)</h3>
+            <p>Elimino tarefas manuais repetitivas: relatórios, preenchimento de formulários, movimentação de dados entre sistemas.</p>
+            <span class="auto-tag">n8n · Python · Selenium</span>
+        </div>
+        <div class="auto-card fade-up">
+            <div class="auto-icon"><i class="fas fa-plug"></i></div>
+            <h3>Integrações via API</h3>
+            <p>Conecto sistemas que não conversam entre si. ERP, CRM, WhatsApp, Sheets, Notion — tudo integrado e sincronizado.</p>
+            <span class="auto-tag">REST API · Webhooks · n8n</span>
+        </div>
+        <div class="auto-card fade-up">
+            <div class="auto-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>Bots para WhatsApp</h3>
+            <p>Chatbots que atendem clientes, qualificam leads, enviam notificações e confirmam pedidos automaticamente.</p>
+            <span class="auto-tag">WhatsApp API · Node.js</span>
+        </div>
+        <div class="auto-card fade-up">
+            <div class="auto-icon"><i class="fas fa-database"></i></div>
+            <h3>ETL &amp; Pipelines de Dados</h3>
+            <p>Automatizo coleta, transformação e carga de dados. De planilhas bagunçadas a dashboards limpos e atualizados.</p>
+            <span class="auto-tag">Python · MySQL · Pandas</span>
+        </div>
+        <div class="auto-card fade-up">
+            <div class="auto-icon"><i class="fas fa-cloud"></i></div>
+            <h3>Workflows no-code / low-code</h3>
+            <p>Fluxos complexos construídos com ferramentas visuais que qualquer membro do time consegue entender e manter.</p>
+            <span class="auto-tag">n8n · Zapier · Make</span>
+        </div>
+        <div class="auto-card fade-up">
+            <div class="auto-icon"><i class="fas fa-server"></i></div>
+            <h3>Sistemas Web Completos</h3>
+            <p>Aplicações sob medida com PHP/Laravel, React e APIs robustas para suportar toda a lógica do seu negócio.</p>
+            <span class="auto-tag">Laravel · React · MySQL</span>
+        </div>
+    </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+    <div class="section-label">tecnologias</div>
+    <h2 class="section-title">Stack &amp; Ferramentas</h2>
+    <div class="skills-grid">
+        <div class="skill-chip fade-up"><i class="fab fa-php php-color"></i><span>PHP</span></div>
+        <div class="skill-chip fade-up"><i class="fab fa-laravel laravel-color"></i><span>Laravel</span></div>
+        <div class="skill-chip fade-up"><i class="fab fa-js js-color"></i><span>JavaScript</span></div>
+        <div class="skill-chip fade-up"><i class="fab fa-python python-color"></i><span>Python</span></div>
+        <div class="skill-chip fade-up"><i class="fab fa-react react-color"></i><span>React</span></div>
+        <div class="skill-chip fade-up"><i class="fab fa-node-js node-color"></i><span>Node.js</span></div>
+        <div class="skill-chip fade-up"><i class="fas fa-database mysql-color"></i><span>MySQL</span></div>
+        <div class="skill-chip fade-up"><i class="fab fa-git-alt git-color"></i><span>Git</span></div>
+        <div class="skill-chip fade-up"><i class="fas fa-project-diagram n8n-color"></i><span>n8n</span></div>
+        <div class="skill-chip fade-up"><i class="fas fa-bolt zapier-color"></i><span>Zapier</span></div>
+        <div class="skill-chip fade-up"><i class="fas fa-exchange-alt api-color"></i><span>REST API</span></div>
+        <div class="skill-chip fade-up"><i class="fab fa-docker docker-color"></i><span>Docker</span></div>
+    </div>
+</section>
+
+<!-- RECONHECIMENTOS -->
+<section id="reconhecimentos">
+    <div class="section-label">trajetória</div>
+    <h2 class="section-title">Reconhecimentos &amp; Formação</h2>
+    <div class="timeline">
+        <div class="tl-dot"></div>
+
+        <div class="tl-item right fade-up">
+            <div class="tl-content">
+                <div class="tl-date">Janeiro 2025 — Dezembro 2025</div>
+                <h3>Pós-graduação em Engenharia de Software</h3>
+                <div class="tl-org">Faculdade Descomplica</div>
+                <p>Aprofundando conhecimentos em arquitetura de software, qualidade e boas práticas de engenharia.</p>
             </div>
         </div>
-        <!-- Nav Bar End -->
 
-
-        <!-- Hero Start -->
-        <div class="hero" id="home">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="hero-content">
-                            <div class="hero-text">
-                                <h1 class="text-dark">
-                                    𝐊𝐚𝐮𝐚𝐧
-                                    <span class="bg-dark text-light px-2 rounded">𝐃𝐨𝐦𝐢𝐧𝐠𝐨𝐬</span>
-                                </h1>
-                                <p class="bg-dark text-light">Sou <span id="changingText"></span></p>
-                                <button id="copyButton" style="background-color: #C4EEF2; border: none; color: #3E848C; padding: 10px 20px; font-size: 18px; border-radius: 6px; cursor: pointer; margin-top: 5px; display: inline-flex; align-items: center;">
-                                    <strong>Copiar E-mail</strong>
-                                    <img src="img/mouse-click-icon.png" style="width: 15px; margin-left: 8px;" alt="">
-                                </button>
-
-                                <div id="toast" class="toast">E-mail copiado para a área de transferência!</div>
-                            </div>                                                                      
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 d-none d-md-block">
-                        <div class="hero-image">
-                            <img src="img/hero.png" alt="Hero Image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-                    
-         <!-- Experience Start -->
-        <div class="experience" id="experience">
-            <div class="container">
-                <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <h2 style="color: #A67458;">Reconhecimentos e Prêmios</h2>
-                </header>
-                <div class="timeline">
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text" style="background-color: #3E848C; color: #C4EEF2; padding: 20px; border-radius: 10px;">
-                            <div class="timeline-date" style="color: black;">Maio - 2024</div>
-                            <h2 style="color: #fff;">Cursando Pós-graduação</h2>
-                            <h4 style="color: #fff;">FACULDADE DESCOMPLICA</h4>
-                            <img src="img/descomplica.PNG" alt="" width="50%">
-                            <p style="color: #fff;">
-                                Estudante de <strong>PÓS-GRADUAÇÃO</strong> em <strong>ENGENHARIA DE SOFTWARE</strong>.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text" style="background-color: #3E848C; color: #C4EEF2; padding: 20px; border-radius: 10px;">
-                            <div class="timeline-date" style="color: black;">Junho - 2024</div>
-                            <h2 style="color: #fff;">1° Ranking Geral de entregas</h2>
-                            <h4 style="color: #fff;">SECTOTECH</h4>
-                            <img src="img/ranking-junho.jpeg" alt="" width="50%">
-                            <p style="color: #fff;">
-                                No mês de junho, atuando na SECTOTECH, fui premiado pelo meu desempenho. Este mês foi especialmente marcante, pois foi a primeira vez que um desenvolvedor ultrapassou os 1500 pontos no ranking mensal, estabelecendo o recorde histórico da empresa.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text" style="background-color: #3E848C; color: #C4EEF2; padding: 20px; border-radius: 10px;">
-                            <div class="timeline-date" style="color: black;">Maio - 2024</div>
-                            <h2 style="color: #fff;">3° Ranking Geral de entregas</h2>
-                            <h4 style="color: #fff;">SECTOTECH</h4>
-                            <img src="img/ranking-maio.jpeg" alt="" width="50%">
-                            <p style="color: #C4EEF2;">
-                                No mês de maio, atuando na SECTOTECH, fui premiado pelo meu desempenho. Cada tarefa interna atribuía uma quantidade específica de pontos, e, entre 10 desenvolvedores, finalizei em 3° lugar no ranking.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text" style="background-color: #3E848C; color: #C4EEF2; padding: 20px; border-radius: 10px;">
-                            <div class="timeline-date" style="color: black;">Abril - 2024</div>
-                            <h2 style="color: #fff;">Abertura de canal no YOUTUBE</h2>
-                            <h4 style="color: #fff;">YOUTUBE </h4>
-                            <img src="img/canal-youtube.png" alt="" width="70%">
-                            <p style="color: #C4EEF2;">
-                                Abertura de canal no YOUTUBE
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text" style="background-color: #3E848C; color: #C4EEF2; padding: 20px; border-radius: 10px;">
-                            <div class="timeline-date" style="color: black;">2022 - 2024</div>
-                            <h2 style="color: #fff;">GRADUAÇÃO CONCLUÍDA</h2>
-                            <h4 style="color: #fff;">FACULDADE IMPACTA</h4>
-                            <img src="img/portfolio-3.jpg" alt="" width="70%">
-                            <p style="color: #C4EEF2;">
-                                Formado em Análise e Desenvolvimento de sistemas na FACULDADE IMPACTA
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text" style="background-color: #3E848C; color: #C4EEF2; padding: 20px; border-radius: 10px;">
-                            <div class="timeline-date" style="color: black;">2020</div>
-                            <h2 style="color: #fff;">INICIAÇÃO CIENTIFICA EM MATEMATICA</h2>
-                            <h4 style="color: #fff;">USP - UNIVERSIDADE DE SÃO PAULO</h4>
-                            <img src="img/usp.jpg" alt="" width="70%">
-                            <p style="color: #C4EEF2;">
-                                Após receber a medalha de bronze na OBMEP (Olimpíada Brasileira de Matemática das Escolas Públicas), fui convidado pela USP para participar de um curso de Matemática com duração de seis meses.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        <!-- Job Experience End -->
-
-        <!-- Portfolio Start -->
-        <div class="portfolio" id="portfolio">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Portfolio</p>
-                    <h2 style="color: #A67458;">Experiências e Projetos</h2>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <ul id="portfolio-filter">
-                            <!-- <li data-filter="*" class="filter-active">Todas</li> -->
-                            <!-- <li data-filter=".filter-1">Web Design</li>
-                            <li data-filter=".filter-2">Mobile Apps</li>
-                            <li data-filter=".filter-3">Game Dev</li> -->
-                        </ul>
-                    </div>
-                </div>
-                <div class="row portfolio-container">
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-1.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>SECTOTECH LTDA</h3>
-                                <a class="btn" href="img/portfolio-1.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-2.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>CRESCER TECNOLOGIA</h3>
-                                <a class="btn" href="img/portfolio-2.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/bella_yellow.png" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>BELLA FREGUESIA</h3>
-                                <a class="btn" href="img/bella.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-3.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>FACULDADE IMPACTA</h3>
-                                <a class="btn" href="img/portfolio-3.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-4.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>SIRIUS AUTOMOTIVE</h3>
-                                <a class="btn" href="img/portfolio-4.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-5.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>CENTRO BRITÂNICO</h3>
-                                <a class="btn" href="img/portfolio-5.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="1s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-6.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>NUTRIPORT</h3>
-                                <a class="btn" href="img/portfolio-6.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="1s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-7.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>ARCANIMAL</h3>
-                                <a class="btn" href="img/portfolio-7.jpg" data-lightbox="portfolio">+</a>
-                                <p class="description">TRABALHO VOLUNTARIO</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio End -->
-        
-        <!-- Testimonial Start -->
-        <div class="testimonial wow fadeInUp" data-wow-delay="0.1s" id="review">
-            <div class="container">
-                <div class="testimonial-icon">
-                    <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                        <h2 style="color: white;">Recomendações</h2>
-                    </div>
-                    <i class="fa fa-quote-left"></i>
-                </div>
-                <div class="owl-carousel testimonials-carousel">
-                    <div class="testimonial-item">
-                        <div class="testimonial-img">
-                            <img src="img/testimonial-1.jpg" alt="Image">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>
-                                Kauan é um excelente profissional, tive o prazer de trabalhar junto com ele.
-                                Destaco uma qualidade que considero excepcional, que é a de replicar o conhecimento sobre tudo que ele aprende. Pegou em pouco tempo PHP e Laravel, que é uma stack que usamos em vários projetos, com poucas semanas já estava entregando demandas, o que reforça que o mesmo é comprometido tanto nos estudos, quanto na dedicação de entregar aquilo que lhe é repassado. Pode compor qualquer equipe sem sombra de dúvidas!                            
-                            </p>
-                            <h3>Guilherme França</h3>
-                            <h4>Tech lead</h4>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-img">
-                            <img src="img/testimonial-2.jpg" alt="Image">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>
-                                O Kauan é um profissional excelente e um colega sem igual!
-                                Sempre demonstrou muito interesse em aprender e se desenvolver, toda a tarefa confiada a ele era certeza de que se empenharia ao máximo para obter o melhor resultado possível, além disso sempre buscava pela excelência técnica e primava pelo bom funcionamento das funcionalidades por ele desenvolvidas, sempre disposto a auxiliar e muito simpático!
-                                Com toda a certeza um profissional que integrará muito bem qualquer equipe na qual for colocado!
-                            </p>
-                            <h3>Jessé Jorge Santana</h3>
-                            <h4>Desenvolvedor Fullstack</h4>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-img">
-                            <img src="https://avatars.githubusercontent.com/u/90224100?v=4" alt="Image">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>
-                            Tive o prazer de trabalhar com o Kauan Domingos por bastante tempo na SectoTech, e posso dizer que ele é um excelente desenvolvedor e um comunicador incrível. Durante esse tempo, ele sempre mostrou iniciativa e uma habilidade excepcional em colaborar com o time, tornando qualquer projeto mais fluido e leve.
-                            Kauan traz ótimas ideias para a mesa e sabe como aplicá-las de forma prática. Ele não só resolve problemas técnicos como também sabe se comunicar muito bem, o que faz toda a diferença em um ambiente de trabalho colaborativo. Além disso, trabalhar com ele foi muito tranquilo e divertido, o que só deixou o clima no time ainda melhor.
-                            Recomendo o Kauan para qualquer desafio, pois ele tem uma combinação rara de habilidade técnica e empatia que faz toda a diferença.
-                            </p>
-                            <h3>João Pereira</h3>
-                            <h4>Desenvolvedor Pleno</h4>
-                        </div>
-                    </div>
-                </div>
+        <div class="tl-item left fade-up">
+            <div class="tl-content">
+                <div class="tl-date">Junho 2024</div>
+                <h3>🏆 1° Ranking Geral de Entregas</h3>
+                <div class="tl-org">SECTOTECH</div>
+                <p>Primeiro desenvolvedor na história da empresa a ultrapassar 1.500 pontos no ranking mensal — novo recorde estabelecido.</p>
             </div>
         </div>
 
-        <div class="footer wow fadeIn" data-wow-delay="0.3s" id="contact">
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="footer-info">
-                        <div class="footer-menu">
-                            <p style="display: flex; align-items: center; font-size: 16px; color: #C4EEF2;">
-                                <i class="fas fa-envelope" style="font-size: 20px; color: #A67458; margin-right: 10px;"></i>
-                                ricardo.kauand@gmail.com
-                            </p>
-
-                            <p style="display: flex; align-items: center; font-size: 16px; color: #C4EEF2;">
-                                <i class="fab fa-whatsapp" style="font-size: 20px; color: #25D366; margin-right: 10px;"></i>
-                                (11) 98747-8316
-                            </p>
-
-                            <p style="display: flex; align-items: center; font-size: 16px;">
-                                <a href="https://github.com/KauanSundays" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: #025159; background-color: #C4EEF2; padding: 10px; border-radius: 8px;">
-                                    <i class="fab fa-github" style="font-size: 24px; margin-right: 10px;"></i>
-                                    <span style="font-size: 16px; font-weight: bold;">KauanSundays</span>
-                                </a>
-                            </p>
-                            
-                        </div>
-                        <div class="footer-social">
-                            <a href="https://www.youtube.com/@PaysanduDev" target="_blank"><i class="fab fa-youtube"></i></a>
-                            <a href="https://www.linkedin.com/in/kauan-domingos-046a83199/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        </div>                        
-                    </div>
-                </div>
-                <div class="container copyright">
-                    <p>&copy; <a href="#">Kauan Rocha</a> | Desenvolvido por <a href="#">KAUAN ROCHA</a></p>
-                </div>
+        <div class="tl-item right fade-up">
+            <div class="tl-content">
+                <div class="tl-date">Maio 2024</div>
+                <h3>🥉 3° Ranking Geral de Entregas</h3>
+                <div class="tl-org">SECTOTECH</div>
+                <p>Entre 10 desenvolvedores, finalizei em 3° lugar no ranking de pontos por entregas no mês.</p>
             </div>
         </div>
 
-        <a href="#" class="btn back-to-top" 
-            style="display: inline-flex; justify-content: center; align-items: center; 
-                width: 50px; height: 50px; background-color: #3E848C; 
-                color: #C4EEF2; border-radius: 8px; 
-                text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-            <i class="fa fa-chevron-up" style="font-size: 24px;"></i>
-        </a>
-             
-        <div id="loader" class="show">
-            <div class="loader"></div>
+        <div class="tl-item left fade-up">
+            <div class="tl-content">
+                <div class="tl-date">2022 — 2024</div>
+                <h3>Graduação — Análise e Desenvolvimento de Sistemas</h3>
+                <div class="tl-org">Faculdade Impacta</div>
+                <p>Formado com sólida base em desenvolvimento, banco de dados, algoritmos e engenharia de software.</p>
+            </div>
         </div>
 
-        
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/typed/typed.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/isotope/isotope.pkgd.min.js"></script>
-        <script src="lib/lightbox/js/lightbox.min.js"></script>
-        
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+        <div class="tl-item right fade-up">
+            <div class="tl-content">
+                <div class="tl-date">2020</div>
+                <h3>Iniciação Científica em Matemática</h3>
+                <div class="tl-org">USP — Universidade de São Paulo</div>
+                <p>Convidado após receber a medalha de bronze na OBMEP. Curso de 6 meses com foco em raciocínio lógico-matemático avançado.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <script>
-            document.getElementById("copyButton").addEventListener("click", function() {
-                const email = "ricardo.kauand@gmail.com"; 
-        
-                navigator.clipboard.writeText(email).then(function() {
-                    var toast = document.getElementById("toast");
-                    toast.className = "toast show";
-                    setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 3000);
-                }).catch(function(error) {
-                    alert("Falha ao copiar o e-mail.");
-                });
-            });
-        </script>
-        <script src="js/main.js"></script>
-    </body>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <div class="section-label">projetos</div>
+    <h2 class="section-title">Experiências &amp; Clientes</h2>
+    <div class="portfolio-grid">
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/portfolio-1.jpg" alt="SECTOTECH"></div>
+            <div class="pf-body">
+                <h3>SECTOTECH LTDA</h3>
+                <p>Desenvolvimento fullstack e automações internas. Recorde histórico de produtividade na plataforma.</p>
+                <div class="pf-tags"><span class="pf-tag">Laravel</span><span class="pf-tag">PHP</span><span class="pf-tag">Automação</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/portfolio-2.jpg" alt="CRESCER TECNOLOGIA"></div>
+            <div class="pf-body">
+                <h3>CRESCER TECNOLOGIA</h3>
+                <p>Sistemas e integrações para empresa de tecnologia educacional.</p>
+                <div class="pf-tags"><span class="pf-tag">React</span><span class="pf-tag">Node.js</span><span class="pf-tag">API</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/bella_yellow.png" alt="BELLA FREGUESIA"></div>
+            <div class="pf-body">
+                <h3>BELLA FREGUESIA</h3>
+                <p>Presença digital e automação de pedidos para restaurante.</p>
+                <div class="pf-tags"><span class="pf-tag">WhatsApp Bot</span><span class="pf-tag">Web</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/portfolio-4.jpg" alt="SIRIUS AUTOMOTIVE"></div>
+            <div class="pf-body">
+                <h3>SIRIUS AUTOMOTIVE</h3>
+                <p>Sistema de gestão e automação de processos para setor automotivo.</p>
+                <div class="pf-tags"><span class="pf-tag">PHP</span><span class="pf-tag">MySQL</span><span class="pf-tag">Integração</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/portfolio-5.jpg" alt="CENTRO BRITÂNICO"></div>
+            <div class="pf-body">
+                <h3>CENTRO BRITÂNICO</h3>
+                <p>Plataforma educacional com gestão de alunos e automação de comunicação.</p>
+                <div class="pf-tags"><span class="pf-tag">Laravel</span><span class="pf-tag">Notificações</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/portfolio-6.jpg" alt="NUTRIPORT"></div>
+            <div class="pf-body">
+                <h3>NUTRIPORT</h3>
+                <p>Sistema de acompanhamento nutricional com relatórios automáticos.</p>
+                <div class="pf-tags"><span class="pf-tag">Python</span><span class="pf-tag">Dashboard</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/portfolio-7.jpg" alt="ARCANIMAL"></div>
+            <div class="pf-body">
+                <h3>ARCANIMAL</h3>
+                <p>Trabalho voluntário — sistema de adoção e controle de animais.</p>
+                <div class="pf-tags"><span class="pf-tag">Voluntário</span><span class="pf-tag">Web</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+    <div class="section-label">recomendações</div>
+    <h2 class="section-title">O que dizem sobre mim</h2>
+    <div class="dep-grid">
+        <div class="dep-card fade-up">
+            <p class="dep-text">Kauan é um excelente profissional. Pegou PHP e Laravel em poucas semanas e já estava entregando demandas — comprometido tanto nos estudos quanto nas entregas. Pode compor qualquer equipe sem sombra de dúvidas!</p>
+            <div class="dep-author">
+                <img class="dep-avatar" src="img/testimonial-1.jpg" alt="Guilherme França">
+                <div>
+                    <div class="dep-name">Guilherme França</div>
+                    <div class="dep-role">Tech Lead</div>
+                </div>
+            </div>
+        </div>
+        <div class="dep-card fade-up">
+            <p class="dep-text">Sempre demonstrou muito interesse em aprender. Toda tarefa confiada a ele era certeza de empenho máximo. Sempre buscou a excelência técnica e estava disposto a auxiliar os colegas.</p>
+            <div class="dep-author">
+                <img class="dep-avatar" src="img/testimonial-2.jpg" alt="Jessé Jorge">
+                <div>
+                    <div class="dep-name">Jessé Jorge Santana</div>
+                    <div class="dep-role">Desenvolvedor Fullstack</div>
+                </div>
+            </div>
+        </div>
+        <div class="dep-card fade-up">
+            <p class="dep-text">Excelente desenvolvedor e comunicador incrível. Traz ótimas ideias e sabe aplicá-las de forma prática. Tem uma combinação rara de habilidade técnica e empatia que faz toda a diferença.</p>
+            <div class="dep-author">
+                <img class="dep-avatar" src="https://avatars.githubusercontent.com/u/90224100?v=4" alt="João Pereira">
+                <div>
+                    <div class="dep-name">João Pereira</div>
+                    <div class="dep-role">Desenvolvedor Pleno</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+    <div class="section-label">contato</div>
+    <h2 class="section-title">Vamos automatizar o seu negócio?</h2>
+    <p class="section-desc" style="margin: 0 auto; text-align:center;">
+        Mande uma mensagem. Em 24h eu analiso o seu processo e mostro o que dá pra automatizar.
+    </p>
+    <div class="contact-box">
+        <div class="contact-links">
+            <a class="contact-link" id="emailLink" href="#" onclick="copyEmail(event)">
+                <i class="fas fa-envelope" style="color: var(--orange);"></i>
+                <span class="cl-label">e-mail</span>
+                <span class="cl-val">ricardo.kauand@gmail.com</span>
+                <i class="fas fa-copy" style="font-size:0.8rem;color:var(--muted);"></i>
+            </a>
+            <a class="contact-link" href="https://wa.me/5511987478316" target="_blank">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                <span class="cl-label">whatsapp</span>
+                <span class="cl-val">(11) 98747-8316</span>
+                <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;color:var(--muted);"></i>
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/kauan-domingos-046a83199/" target="_blank">
+                <i class="fab fa-linkedin" style="color: #0A66C2;"></i>
+                <span class="cl-label">linkedin</span>
+                <span class="cl-val">kauan-domingos</span>
+                <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;color:var(--muted);"></i>
+            </a>
+            <a class="contact-link" href="https://github.com/KauanSundays" target="_blank">
+                <i class="fab fa-github" style="color: var(--text);"></i>
+                <span class="cl-label">github</span>
+                <span class="cl-val">KauanSundays</span>
+                <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;color:var(--muted);"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">Kauan Domingos<span>.</span></div>
+    <div class="footer-copy">© 2025 — Desenvolvido por Kauan Rocha</div>
+    <div class="footer-socials">
+        <a href="https://www.youtube.com/@PaysanduDev" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/kauan-domingos-046a83199/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/KauanSundays" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+</footer>
+
+<a href="#home" class="back-top" id="backTop"><i class="fas fa-chevron-up"></i></a>
+<div class="copy-toast" id="toast">✓ E-mail copiado!</div>
+
+<script>
+// ─── TERMINAL ANIMATION ───
+const lines = [
+    { type: 'cmd', prompt: '$', text: 'python automate.py --client="Bella Freguesia"' },
+    { type: 'out', text: '→ Conectando à API do WhatsApp...', color: 'cyan' },
+    { type: 'out', text: '→ Carregando fluxo de pedidos...', color: 'cyan' },
+    { type: 'out', text: '✓ 47 respostas automáticas configuradas', color: 'success' },
+    { type: 'out', text: '✓ Confirmação de pedido em 0.3s (antes: manual)', color: 'success' },
+    { type: 'out', text: '⚡ Tempo economizado/semana: ~12 horas', color: 'warn' },
+    { type: 'cmd', prompt: '$', text: 'node pipeline.js --source=sheets --dest=erp' },
+    { type: 'out', text: '→ Sincronizando 1.284 registros...', color: 'cyan' },
+    { type: 'out', text: '✓ Pipeline executado sem erros', color: 'success' },
+    { type: 'cmd', prompt: '$', text: '▊', cursor: true },
+];
+
+const terminal = document.getElementById('terminal-body');
+let i = 0;
+
+function renderLine() {
+    if (i >= lines.length) return;
+    const l = lines[i++];
+    const div = document.createElement('div');
+
+    if (l.type === 'cmd') {
+        div.innerHTML = `<div class="t-line"><span class="t-prompt">${l.prompt}</span><span class="t-cmd">${l.cursor ? '<span class="t-cursor"></span>' : l.text}</span></div>`;
+    } else {
+        const cls = l.color === 'success' ? 't-success' : l.color === 'warn' ? 't-warn' : l.color === 'cyan' ? 't-cyan' : 't-output';
+        div.innerHTML = `<div class="t-output ${cls}">${l.text}</div>`;
+    }
+    terminal.appendChild(div);
+    setTimeout(renderLine, l.type === 'cmd' ? 600 : 200);
+}
+setTimeout(renderLine, 800);
+
+// ─── COUNTER ANIMATION ───
+function animateCount(el, target, suffix, duration) {
+    let start = 0;
+    const step = Math.ceil(target / (duration / 16));
+    const t = setInterval(() => {
+        start = Math.min(start + step, target);
+        el.innerHTML = start + '<span class="orange">' + suffix + '</span>';
+        if (start >= target) clearInterval(t);
+    }, 16);
+}
+
+const statsObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+        animateCount(document.getElementById('stat1'), 30, '+', 1200);
+        animateCount(document.getElementById('stat2'), 500, 'h', 1400);
+        animateCount(document.getElementById('stat3'), 20, '+', 1000);
+        statsObserver.disconnect();
+    }
+}, { threshold: 0.5 });
+statsObserver.observe(document.querySelector('.stats-bar'));
+
+// ─── FADE UP ON SCROLL ───
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─── BACK TO TOP ───
+window.addEventListener('scroll', () => {
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+// ─── COPY EMAIL ───
+function copyEmail(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText('ricardo.kauand@gmail.com').then(() => {
+        const t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+    });
+}
+</script>
+</body>
 </html>
