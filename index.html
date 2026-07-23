@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/hacker.png">
     <title>Kauan Domingos — Rei da Automação</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -102,18 +103,72 @@
         }
         .hero-sub strong { color: var(--text); }
         .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+        /* ─── NOVO ESTILO DO BOTÃO DE WHATSAPP (Substituindo o antigo .btn-primary) ─── */
         .btn-primary {
-            background: var(--orange);
-            color: #fff; border: none;
-            padding: 0.85rem 2rem;
+            /* Cores e Fundo */
+            background: #25D366; /* Verde oficial do WhatsApp */
+            color: #fff; /* Texto branco para contraste */
+            
+            /* Bordas e Espaçamento */
+            border: none;
+            padding: 1rem 2.5rem; /* Um pouco maior para chamar mais atenção */
+            border-radius: 50px; /* Bordas totalmente arredondadas (estilo pílula) fica mais moderno */
+            
+            /* Tipografia */
             font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600; font-size: 0.95rem;
-            border-radius: 6px; cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-weight: 700; /* Mais negrito */
+            font-size: 1rem;
+            text-transform: uppercase; /* Cartas maiúsculas para impacto */
+            letter-spacing: 0.05em;
+            
+            /* Comportamento e Alinhamento */
+            cursor: pointer;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem; /* Espaço entre ícone e texto */
+            
+            /* Transições suaves e Sombra Inicial */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            
+            /* Aplica a animação de pulso definida abaixo */
+            animation: pulse-green 2s infinite;
+            position: relative; /* Necessário para o efeito de brilho hover */
+            overflow: hidden;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,43,0.35); }
+
+        /* Efeito de Hover (Passar o mouse) */
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03); /* Sobe um pouco e aumenta levemente */
+            background: #1eb956; /* Verde ligeiramente mais escuro no hover */
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); /* Sombra mais forte */
+            animation: none; /* Para de pulsar quando o mouse está em cima */
+        }
+
+        /* Corrigindo a cor do ícone no hover caso necessário */
+        .btn-primary:hover i {
+            color: #fff;
+        }
+
+        /* ─── ANIMAÇÃO DE PULSO VERDE ─── */
+        @keyframes pulse-green {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            
+            70% {
+                transform: scale(1);
+                /* Cria uma "onda" de sombra para fora */
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
         .btn-ghost {
             background: transparent;
             color: var(--cyan); border: 1px solid var(--cyan);
@@ -255,33 +310,22 @@
         /* ─── HABILIDADES ─── */
         #habilidades { background: var(--surface); }
         .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1rem; margin-top: 3rem;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.25rem; margin-top: 3rem;
         }
         .skill-chip {
             background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.9rem 0.75rem;
-            text-align: center;
-            transition: border-color 0.2s, background 0.2s;
+            border-radius: 10px;
+            padding: 1.5rem 1.25rem;
+            text-align: left;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
             cursor: default;
         }
-        .skill-chip:hover { border-color: var(--cyan); background: rgba(0,212,255,0.04); }
-        .skill-chip i { font-size: 1.6rem; margin-bottom: 0.4rem; display: block; }
-        .skill-chip span { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); }
-        .php-color { color: #8892BF; }
-        .laravel-color { color: #FF2D20; }
-        .js-color { color: #F7DF1E; }
-        .python-color { color: #3776AB; }
-        .react-color { color: #61DAFB; }
-        .mysql-color { color: #4479A1; }
-        .git-color { color: #F05032; }
-        .node-color { color: #339933; }
-        .n8n-color { color: #EA4B71; }
-        .zapier-color { color: #FF4A00; }
-        .api-color { color: var(--cyan); }
-        .docker-color { color: #2496ED; }
+        .skill-chip:hover { border-color: var(--cyan); background: rgba(0,212,255,0.04); transform: translateY(-3px); }
+        .skill-chip i { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; color: var(--cyan); }
+        .skill-chip h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+        .skill-chip span { font-size: 0.8rem; color: var(--muted); line-height: 1.5; display: block; }
 
         /* ─── TIMELINE / RECONHECIMENTOS ─── */
         #reconhecimentos { background: var(--bg); }
@@ -509,7 +553,7 @@
     <ul class="nav-links">
         <li><a href="#home">home</a></li>
         <li><a href="#automacao">automação</a></li>
-        <li><a href="#habilidades">skills</a></li>
+        <li><a href="#habilidades">o que eu faço</a></li>
         <li><a href="#portfolio">portfolio</a></li>
         <li><a href="#depoimentos">reviews</a></li>
         <li><a href="#contato">contato</a></li>
@@ -522,16 +566,16 @@
         <div class="hero-eyebrow">Automação &amp; Desenvolvimento</div>
         <h1 class="hero-title">
             <span class="name">Kauan Domingos</span>
-            <span class="role">Rei da Automação</span>
+            <span class="role">Automação e software</span>
         </h1>
         <p class="hero-sub">
             Transformo <strong>processos repetitivos em fluxos automáticos</strong>. 
-            Se você gasta horas fazendo o mesmo manualmente, eu resolvo isso — 
-            com código limpo, integrações inteligentes e zero retrabalho.
+            Se você gasta horas fazendo o mesmo manualmente, eu resolvo isso
+            com um trabalho bem feito, sistemas que conversam entre si e zero retrabalho.
         </p>
         <div class="hero-ctas">
-            <a href="#contato" class="btn-primary">
-                <i class="fas fa-bolt"></i> Quero automatizar agora
+            <a href="https://wa.me/5511987478316" target="_blank" class="btn-primary">
+                <i class="fab fa-whatsapp"></i> Quero automatizar agora
             </a>
             <a href="#portfolio" class="btn-ghost">
                 <i class="fas fa-code"></i> Ver projetos
@@ -543,7 +587,7 @@
             <div class="dot red"></div>
             <div class="dot yellow"></div>
             <div class="dot green"></div>
-            <span class="terminal-label">kauan@automacao ~ automate.sh</span>
+            <span class="terminal-label">painel de automação</span>
         </div>
         <div class="terminal-body" id="terminal-body">
             <!-- filled by JS -->
@@ -582,60 +626,79 @@
     <div class="auto-grid">
         <div class="auto-card fade-up">
             <div class="auto-icon"><i class="fas fa-robot"></i></div>
-            <h3>Automação de Processos (RPA)</h3>
+            <h3>Automação de Processos</h3>
             <p>Elimino tarefas manuais repetitivas: relatórios, preenchimento de formulários, movimentação de dados entre sistemas.</p>
-            <span class="auto-tag">n8n · Python · Selenium</span>
+            <span class="auto-tag">Menos trabalho manual</span>
         </div>
         <div class="auto-card fade-up">
             <div class="auto-icon"><i class="fas fa-plug"></i></div>
-            <h3>Integrações via API</h3>
-            <p>Conecto sistemas que não conversam entre si. ERP, CRM, WhatsApp, Sheets, Notion — tudo integrado e sincronizado.</p>
-            <span class="auto-tag">REST API · Webhooks · n8n</span>
+            <h3>Sistemas que se conversam</h3>
+            <p>Conecto sistemas que não trocam informação entre si. ERP, CRM, WhatsApp, Planilhas, Notion — tudo integrado e sincronizado.</p>
+            <span class="auto-tag">Dados sempre atualizados</span>
         </div>
         <div class="auto-card fade-up">
             <div class="auto-icon"><i class="fab fa-whatsapp"></i></div>
-            <h3>Bots para WhatsApp</h3>
-            <p>Chatbots que atendem clientes, qualificam leads, enviam notificações e confirmam pedidos automaticamente.</p>
-            <span class="auto-tag">WhatsApp API · Node.js</span>
+            <h3>Atendimento pelo WhatsApp</h3>
+            <p>Robôs de conversa que atendem clientes, qualificam leads, enviam notificações e confirmam pedidos automaticamente.</p>
+            <span class="auto-tag">Atendimento 24h</span>
         </div>
         <div class="auto-card fade-up">
             <div class="auto-icon"><i class="fas fa-database"></i></div>
-            <h3>ETL &amp; Pipelines de Dados</h3>
-            <p>Automatizo coleta, transformação e carga de dados. De planilhas bagunçadas a dashboards limpos e atualizados.</p>
-            <span class="auto-tag">Python · MySQL · Pandas</span>
+            <h3>Organização de Dados e Relatórios</h3>
+            <p>Automatizo a coleta e a organização dos seus dados. De planilhas bagunçadas a relatórios limpos e sempre atualizados.</p>
+            <span class="auto-tag">Decisão com dados na mão</span>
         </div>
         <div class="auto-card fade-up">
             <div class="auto-icon"><i class="fas fa-cloud"></i></div>
-            <h3>Workflows no-code / low-code</h3>
-            <p>Fluxos complexos construídos com ferramentas visuais que qualquer membro do time consegue entender e manter.</p>
-            <span class="auto-tag">n8n · Zapier · Make</span>
+            <h3>Fluxos de trabalho automáticos</h3>
+            <p>Fluxos criados de forma visual, fáceis de entender e ajustar — sem depender de mim pra mexer no dia a dia.</p>
+            <span class="auto-tag">Fácil de manter</span>
         </div>
         <div class="auto-card fade-up">
             <div class="auto-icon"><i class="fas fa-server"></i></div>
-            <h3>Sistemas Web Completos</h3>
-            <p>Aplicações sob medida com PHP/Laravel, React e APIs robustas para suportar toda a lógica do seu negócio.</p>
-            <span class="auto-tag">Laravel · React · MySQL</span>
+            <h3>Sites e Sistemas sob Medida</h3>
+            <p>Sistemas feitos do zero para suportar toda a lógica e as necessidades específicas do seu negócio.</p>
+            <span class="auto-tag">Feito sob medida</span>
         </div>
     </div>
 </section>
 
-<!-- HABILIDADES -->
+<!-- O QUE EU FAÇO -->
 <section id="habilidades">
-    <div class="section-label">tecnologias</div>
-    <h2 class="section-title">Stack &amp; Ferramentas</h2>
+    <div class="section-label">como eu ajudo</div>
+    <h2 class="section-title">Áreas em que eu atuo</h2>
+    <p class="section-desc">Não importa a ferramenta por trás, o que importa é o resultado. Aqui estão as frentes em que costumo entregar valor.</p>
     <div class="skills-grid">
-        <div class="skill-chip fade-up"><i class="fab fa-php php-color"></i><span>PHP</span></div>
-        <div class="skill-chip fade-up"><i class="fab fa-laravel laravel-color"></i><span>Laravel</span></div>
-        <div class="skill-chip fade-up"><i class="fab fa-js js-color"></i><span>JavaScript</span></div>
-        <div class="skill-chip fade-up"><i class="fab fa-python python-color"></i><span>Python</span></div>
-        <div class="skill-chip fade-up"><i class="fab fa-react react-color"></i><span>React</span></div>
-        <div class="skill-chip fade-up"><i class="fab fa-node-js node-color"></i><span>Node.js</span></div>
-        <div class="skill-chip fade-up"><i class="fas fa-database mysql-color"></i><span>MySQL</span></div>
-        <div class="skill-chip fade-up"><i class="fab fa-git-alt git-color"></i><span>Git</span></div>
-        <div class="skill-chip fade-up"><i class="fas fa-project-diagram n8n-color"></i><span>n8n</span></div>
-        <div class="skill-chip fade-up"><i class="fas fa-bolt zapier-color"></i><span>Zapier</span></div>
-        <div class="skill-chip fade-up"><i class="fas fa-exchange-alt api-color"></i><span>REST API</span></div>
-        <div class="skill-chip fade-up"><i class="fab fa-docker docker-color"></i><span>Docker</span></div>
+        <div class="skill-chip fade-up">
+            <i class="fas fa-globe"></i>
+            <h4>Sites e Sistemas Web</h4>
+            <span>Páginas, portais e sistemas próprios para o seu negócio funcionar online.</span>
+        </div>
+        <div class="skill-chip fade-up">
+            <i class="fas fa-gears"></i>
+            <h4>Automação de Tarefas</h4>
+            <span>Aquele processo repetitivo do dia a dia rodando sozinho, sem intervenção manual.</span>
+        </div>
+        <div class="skill-chip fade-up">
+            <i class="fas fa-diagram-project"></i>
+            <h4>Integração entre Plataformas</h4>
+            <span>Faço seus sistemas, planilhas e apps conversarem entre si automaticamente.</span>
+        </div>
+        <div class="skill-chip fade-up">
+            <i class="fas fa-brain"></i>
+            <h4>Inteligência Artificial</h4>
+            <span>Uso IA para ler documentos, responder clientes e agilizar análises.</span>
+        </div>
+        <div class="skill-chip fade-up">
+            <i class="fas fa-comments"></i>
+            <h4>Bots e Atendimento</h4>
+            <span>Atendimento automático no WhatsApp e outros canais, sem perder o toque humano.</span>
+        </div>
+        <div class="skill-chip fade-up">
+            <i class="fas fa-chart-line"></i>
+            <h4>Dados e Relatórios</h4>
+            <span>Painéis e relatórios que se atualizam sozinhos, prontos pra você decidir.</span>
+        </div>
     </div>
 </section>
 
@@ -651,33 +714,35 @@
                 <div class="tl-date">Janeiro 2025 — Dezembro 2025</div>
                 <h3>Pós-graduação em Engenharia de Software</h3>
                 <div class="tl-org">Faculdade Descomplica</div>
+                <img src="img/descomplica_logo.png" alt="" style="width: 300px; height: auto;">
                 <p>Aprofundando conhecimentos em arquitetura de software, qualidade e boas práticas de engenharia.</p>
             </div>
         </div>
 
-        <div class="tl-item left fade-up">
+        <!-- <div class="tl-item left fade-up">
             <div class="tl-content">
                 <div class="tl-date">Junho 2024</div>
                 <h3>🏆 1° Ranking Geral de Entregas</h3>
                 <div class="tl-org">SECTOTECH</div>
                 <p>Primeiro desenvolvedor na história da empresa a ultrapassar 1.500 pontos no ranking mensal — novo recorde estabelecido.</p>
             </div>
-        </div>
+        </div> -->
 
-        <div class="tl-item right fade-up">
+        <!-- <div class="tl-item right fade-up">
             <div class="tl-content">
                 <div class="tl-date">Maio 2024</div>
                 <h3>🥉 3° Ranking Geral de Entregas</h3>
                 <div class="tl-org">SECTOTECH</div>
                 <p>Entre 10 desenvolvedores, finalizei em 3° lugar no ranking de pontos por entregas no mês.</p>
             </div>
-        </div>
+        </div> -->
 
         <div class="tl-item left fade-up">
             <div class="tl-content">
                 <div class="tl-date">2022 — 2024</div>
                 <h3>Graduação — Análise e Desenvolvimento de Sistemas</h3>
                 <div class="tl-org">Faculdade Impacta</div>
+                <img src="img/impacta.png" alt="" style="width: 300px; height: auto;">
                 <p>Formado com sólida base em desenvolvimento, banco de dados, algoritmos e engenharia de software.</p>
             </div>
         </div>
@@ -687,6 +752,7 @@
                 <div class="tl-date">2020</div>
                 <h3>Iniciação Científica em Matemática</h3>
                 <div class="tl-org">USP — Universidade de São Paulo</div>
+                <img src="img/usp.jpg" alt="" style="width: 300px; height: auto;">
                 <p>Convidado após receber a medalha de bronze na OBMEP. Curso de 6 meses com foco em raciocínio lógico-matemático avançado.</p>
             </div>
         </div>
@@ -697,37 +763,37 @@
 <section id="portfolio">
     <div class="section-label">projetos</div>
     <h2 class="section-title">Experiências &amp; Clientes</h2>
-    <div class="portfolio-grid">
+<div class="portfolio-grid">
         <div class="pf-card fade-up">
             <div class="pf-img"><img src="img/portfolio-1.jpg" alt="SECTOTECH"></div>
             <div class="pf-body">
                 <h3>SECTOTECH LTDA</h3>
-                <p>Desenvolvimento fullstack e automações internas. Recorde histórico de produtividade na plataforma.</p>
-                <div class="pf-tags"><span class="pf-tag">Laravel</span><span class="pf-tag">PHP</span><span class="pf-tag">Automação</span></div>
+                <p>Desenvolvimento de sistemas sob medida e automações internas. Recorde histórico de produtividade na plataforma.</p>
+                <div class="pf-tags"><span class="pf-tag">Sistema Web</span><span class="pf-tag">Automação de Processos</span><span class="pf-tag">Ganho de Eficiência</span></div>
             </div>
         </div>
         <div class="pf-card fade-up">
             <div class="pf-img"><img src="img/portfolio-2.jpg" alt="CRESCER TECNOLOGIA"></div>
             <div class="pf-body">
                 <h3>CRESCER TECNOLOGIA</h3>
-                <p>Sistemas e integrações para empresa de tecnologia educacional.</p>
-                <div class="pf-tags"><span class="pf-tag">React</span><span class="pf-tag">Node.js</span><span class="pf-tag">API</span></div>
+                <p>Sistemas e conexões inteligentes para empresa de tecnologia educacional.</p>
+                <div class="pf-tags"><span class="pf-tag">Plataforma Digital</span><span class="pf-tag">Integração de Sistemas</span><span class="pf-tag">Otimização</span></div>
             </div>
         </div>
         <div class="pf-card fade-up">
             <div class="pf-img"><img src="img/bella_yellow.png" alt="BELLA FREGUESIA"></div>
             <div class="pf-body">
                 <h3>BELLA FREGUESIA</h3>
-                <p>Presença digital e automação de pedidos para restaurante.</p>
-                <div class="pf-tags"><span class="pf-tag">WhatsApp Bot</span><span class="pf-tag">Web</span></div>
+                <p>Presença digital e automação de atendimento e pedidos para restaurante.</p>
+                <div class="pf-tags"><span class="pf-tag">Atendimento Automático</span><span class="pf-tag">Sistema Web</span><span class="pf-tag">Vendas Automatizadas</span></div>
             </div>
         </div>
         <div class="pf-card fade-up">
             <div class="pf-img"><img src="img/portfolio-4.jpg" alt="SIRIUS AUTOMOTIVE"></div>
             <div class="pf-body">
                 <h3>SIRIUS AUTOMOTIVE</h3>
-                <p>Sistema de gestão e automação de processos para setor automotivo.</p>
-                <div class="pf-tags"><span class="pf-tag">PHP</span><span class="pf-tag">MySQL</span><span class="pf-tag">Integração</span></div>
+                <p>Sistema de gestão e automação de processos para o setor automotivo.</p>
+                <div class="pf-tags"><span class="pf-tag">Gestão Operacional</span><span class="pf-tag">Banco de Dados</span><span class="pf-tag">Integração</span></div>
             </div>
         </div>
         <div class="pf-card fade-up">
@@ -735,23 +801,71 @@
             <div class="pf-body">
                 <h3>CENTRO BRITÂNICO</h3>
                 <p>Plataforma educacional com gestão de alunos e automação de comunicação.</p>
-                <div class="pf-tags"><span class="pf-tag">Laravel</span><span class="pf-tag">Notificações</span></div>
+                <div class="pf-tags"><span class="pf-tag">Gestão de Alunos</span><span class="pf-tag">Comunicação Automática</span><span class="pf-tag">Redução de Custos</span></div>
             </div>
         </div>
         <div class="pf-card fade-up">
             <div class="pf-img"><img src="img/portfolio-6.jpg" alt="NUTRIPORT"></div>
             <div class="pf-body">
                 <h3>NUTRIPORT</h3>
-                <p>Sistema de acompanhamento nutricional com relatórios automáticos.</p>
-                <div class="pf-tags"><span class="pf-tag">Python</span><span class="pf-tag">Dashboard</span></div>
+                <p>Sistema de acompanhamento nutricional com geração automática de relatórios.</p>
+                <div class="pf-tags"><span class="pf-tag">Relatórios Automáticos</span><span class="pf-tag">Painel de Indicadores</span><span class="pf-tag">Análise de Dados</span></div>
             </div>
         </div>
         <div class="pf-card fade-up">
             <div class="pf-img"><img src="img/portfolio-7.jpg" alt="ARCANIMAL"></div>
             <div class="pf-body">
                 <h3>ARCANIMAL</h3>
-                <p>Trabalho voluntário — sistema de adoção e controle de animais.</p>
-                <div class="pf-tags"><span class="pf-tag">Voluntário</span><span class="pf-tag">Web</span></div>
+                <p>Projeto de impacto social — sistema de adoção e controle de animais.</p>
+                <div class="pf-tags"><span class="pf-tag">Impacto Social</span><span class="pf-tag">Plataforma Web</span><span class="pf-tag">Gestão de Processos</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/portfolio-8.jpg" alt="EXO"></div>
+            <div class="pf-body">
+                <h3>EXO</h3>
+                <p>Integração com inteligência artificial e automação na análise de documentos para auditoria sanitária.</p>
+                <div class="pf-tags"><span class="pf-tag">Inteligência Artificial</span><span class="pf-tag">Leitura de Documentos</span><span class="pf-tag">Auditoria Automática</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/detetizadora.png" alt="DETETIZADORA"></div>
+            <div class="pf-body">
+                <h3>DETETIZADORA SOLUTIONS</h3>
+                <p>Integração com inteligência artificial e automação para geração de orçamentos e certificados</p>
+                <div class="pf-tags"><span class="pf-tag">Inteligência Artificial</span><span class="pf-tag">Leitura de Documentos</span><span class="pf-tag">Auditoria Automática</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/all_parts.png" alt="ALL PARTS"></div>
+            <div class="pf-body">
+                <h3>ALL PARTS</h3>
+                <p>Integração com IA para geração automatica de 300 descrições de produtos por minuto.</p>
+                <div class="pf-tags"><span class="pf-tag">Inteligência Artificial</span><span class="pf-tag">Leitura de Documentos</span><span class="pf-tag">Auditoria Automática</span><span class="pf-tag">RPA</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/controle_contabil.png" alt="controle contabil"></div>
+            <div class="pf-body">
+                <h3>Controle Contabil</h3>
+                <p>Automação de Download de Xml de Nfs-e no Portal Nacional com Certificado Digital</p>
+                <div class="pf-tags"><span class="pf-tag">Web Scraping</span><span class="pf-tag">Script</span><span class="pf-tag">RPA</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/s2.png" alt="S2"></div>
+            <div class="pf-body">
+                <h3>S2 Treinamentos</h3>
+                <p>Desenvolvimento de Aplicativo Desktop para Controle de Treinamentos Empresariais</p>
+                <div class="pf-tags"><span class="pf-tag">ERP</span><span class="pf-tag">Aplicativo</span></div>
+            </div>
+        </div>
+        <div class="pf-card fade-up">
+            <div class="pf-img"><img src="img/dhi.png" alt="controle contabil"></div>
+            <div class="pf-body">
+                <h3>S2 Treinamentos</h3>
+                <p>Automação Buscadora de Leads (Encontra 1000 leads por hora)</p>
+                <div class="pf-tags"><span class="pf-tag">Automação</span><span class="pf-tag">RPA</span></div>
             </div>
         </div>
     </div>
@@ -763,32 +877,62 @@
     <h2 class="section-title">O que dizem sobre mim</h2>
     <div class="dep-grid">
         <div class="dep-card fade-up">
-            <p class="dep-text">Kauan é um excelente profissional. Pegou PHP e Laravel em poucas semanas e já estava entregando demandas — comprometido tanto nos estudos quanto nas entregas. Pode compor qualquer equipe sem sombra de dúvidas!</p>
+            <p class="dep-text">Muito profissional está atento aos detalhes e concluiu o projeto de AUTOMAÇÃO DE ORÇAMENTOS</p>
             <div class="dep-author">
-                <img class="dep-avatar" src="img/testimonial-1.jpg" alt="Guilherme França">
+                <img class="dep-avatar" src="img/detetizadora.png" alt="Maicon" style="width: 80px; height: 80px; object-fit: cover;">
                 <div>
-                    <div class="dep-name">Guilherme França</div>
-                    <div class="dep-role">Tech Lead</div>
+                    <div class="dep-name">Maicon</div>
+                    <div class="dep-role">CEO da Detetizadora solutions</div>
                 </div>
             </div>
         </div>
         <div class="dep-card fade-up">
-            <p class="dep-text">Sempre demonstrou muito interesse em aprender. Toda tarefa confiada a ele era certeza de empenho máximo. Sempre buscou a excelência técnica e estava disposto a auxiliar os colegas.</p>
+            <p class="dep-text">Fez tudo com velocidade e retornou as duvidas com soluções. Recomendo</p>
             <div class="dep-author">
-                <img class="dep-avatar" src="img/testimonial-2.jpg" alt="Jessé Jorge">
+                <img class="dep-avatar" src="img/all_parts.png" alt="all parts">
                 <div>
-                    <div class="dep-name">Jessé Jorge Santana</div>
-                    <div class="dep-role">Desenvolvedor Fullstack</div>
+                    <div class="dep-name">Carlos Trigo</div>
+                    <div class="dep-role">Diretor na ALL Parts</div>
                 </div>
             </div>
         </div>
         <div class="dep-card fade-up">
-            <p class="dep-text">Excelente desenvolvedor e comunicador incrível. Traz ótimas ideias e sabe aplicá-las de forma prática. Tem uma combinação rara de habilidade técnica e empatia que faz toda a diferença.</p>
+            <p class="dep-text">Kauan muito prestativo, e atenciosos executou a demanda de forma rápida e eficiente, a automação rodando perfeitamente.</p>
             <div class="dep-author">
-                <img class="dep-avatar" src="https://avatars.githubusercontent.com/u/90224100?v=4" alt="João Pereira">
+                <img class="dep-avatar" src="img/controle_contabil.png" alt="controle contabil">
                 <div>
-                    <div class="dep-name">João Pereira</div>
-                    <div class="dep-role">Desenvolvedor Pleno</div>
+                    <div class="dep-name">Juliana</div>
+                    <div class="dep-role">Lider de Contabilidade na Controle Contabil</div>
+                </div>
+            </div>
+        </div>
+        <div class="dep-card fade-up">
+            <p class="dep-text">Desenvolveu nosso ERP ficou muito bom atendeu todas nossas necessidades.</p>
+            <div class="dep-author">
+                <img class="dep-avatar" src="img/s2.png" alt="s2">
+                <div>
+                    <div class="dep-name">Richard Macedo</div>
+                    <div class="dep-role">Fundador da S2 Treinamentos</div>
+                </div>
+            </div>
+        </div>
+        <div class="dep-card fade-up">
+            <p class="dep-text">O Kauan não só cumpriu com o que fora proposto, mas também com sugestões e implementações pertinentes para a devia solução do projeto. Seu atendimento foi excepcional, sempre muito paciente e diligente quanto quanto a dúvidas, pedidos de implementação e testes</p>
+            <div class="dep-author">
+                <img class="dep-avatar" src="img/dhi.png" alt="DHIEIDER GONÇALVES SOCIEDADE INDIVIDUAL DE ADVOCACIA">
+                <div>
+                    <div class="dep-name">Dhieider Gonçalves</div>
+                    <div class="dep-role">Fundador da DHIEIDER GONÇALVES ADVOCACIA</div>
+                </div>
+            </div>
+        </div>
+        <div class="dep-card fade-up">
+            <p class="dep-text">SUA EMPRESA ESTARÁ AQUI EM BREVE</p>
+            <div class="dep-author">
+                <img class="dep-avatar" src="img/SUALOG.png" alt="SUA LOGO ESTARÁ AQUI">
+                <div>
+                    <div class="dep-name">SUA LOGO ESTARÁ AQUI EM BREVE</div>
+                    <div class="dep-role">APÓS TERMINAR SEU PROJETO COMIGO</div>
                 </div>
             </div>
         </div>
@@ -835,7 +979,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-logo">Kauan Domingos<span>.</span></div>
-    <div class="footer-copy">© 2025 — Desenvolvido por Kauan Rocha</div>
+    <div class="footer-copy">© 2026 — Desenvolvido por Kauan Domingos</div>
     <div class="footer-socials">
         <a href="https://www.youtube.com/@PaysanduDev" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://www.linkedin.com/in/kauan-domingos-046a83199/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -849,15 +993,15 @@
 <script>
 // ─── TERMINAL ANIMATION ───
 const lines = [
-    { type: 'cmd', prompt: '$', text: 'python automate.py --client="Bella Freguesia"' },
-    { type: 'out', text: '→ Conectando à API do WhatsApp...', color: 'cyan' },
-    { type: 'out', text: '→ Carregando fluxo de pedidos...', color: 'cyan' },
+    { type: 'cmd', prompt: '$', text: 'iniciar automação — cliente: Exo Corporation' },
+    { type: 'out', text: '→ Conectando ao WhatsApp do restaurante...', color: 'cyan' },
+    { type: 'out', text: '→ Configurando fluxo de pedidos...', color: 'cyan' },
     { type: 'out', text: '✓ 47 respostas automáticas configuradas', color: 'success' },
-    { type: 'out', text: '✓ Confirmação de pedido em 0.3s (antes: manual)', color: 'success' },
-    { type: 'out', text: '⚡ Tempo economizado/semana: ~12 horas', color: 'warn' },
-    { type: 'cmd', prompt: '$', text: 'node pipeline.js --source=sheets --dest=erp' },
-    { type: 'out', text: '→ Sincronizando 1.284 registros...', color: 'cyan' },
-    { type: 'out', text: '✓ Pipeline executado sem erros', color: 'success' },
+    { type: 'out', text: '✓ Confirmação de pedido em segundos (antes: manual)', color: 'success' },
+    { type: 'out', text: '⚡ Tempo economizado por semana: ~12 horas', color: 'warn' },
+    { type: 'cmd', prompt: '$', text: 'sincronizar dados — planilha → sistema' },
+    { type: 'out', text: '→ Atualizando 1.284 registros...', color: 'cyan' },
+    { type: 'out', text: '✓ Sincronização concluída sem erros', color: 'success' },
     { type: 'cmd', prompt: '$', text: '▊', cursor: true },
 ];
 
